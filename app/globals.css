@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 40 20% 97%;
+    --foreground: 220 20% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 18%;
+    --primary: 220 25% 22%;
+    --primary-foreground: 40 20% 97%;
+    --secondary: 40 15% 92%;
+    --secondary-foreground: 220 20% 18%;
+    --muted: 40 10% 88%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 220 25% 22%;
+    --accent-foreground: 40 20% 97%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 220 25% 22%;
+    --chart-1: 220 25% 22%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Aurora Mesh Gradient Background - Vibrant Pink/Purple/Blue */
+.aurora-bg {
+  position: relative;
+  background: linear-gradient(135deg, #fef2f5 0%, #f3eefa 50%, #eef4ff 100%);
+  overflow: hidden;
+}
+
+.aurora-bg::before {
+  content: "";
+  position: fixed;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+  background: 
+    /* Electric Pink - top left sweep */
+    radial-gradient(ellipse 80% 70% at 0% 0%, rgba(236, 72, 153, 0.65) 0%, transparent 70%),
+    /* Vivid Purple - top right sweep */
+    radial-gradient(ellipse 75% 85% at 100% 5%, rgba(139, 92, 246, 0.6) 0%, transparent 70%),
+    /* Electric Blue - right side */
+    radial-gradient(ellipse 70% 90% at 105% 50%, rgba(59, 130, 246, 0.55) 0%, transparent 65%),
+    /* Peach Pink - bottom right */
+    radial-gradient(ellipse 85% 75% at 90% 95%, rgba(251, 146, 123, 0.6) 0%, transparent 65%),
+    /* Sky Blue - bottom left */
+    radial-gradient(ellipse 80% 70% at 0% 90%, rgba(96, 165, 250, 0.5) 0%, transparent 65%),
+    /* Rose center glow */
+    radial-gradient(ellipse 60% 55% at 50% 45%, rgba(244, 114, 182, 0.45) 0%, transparent 60%),
+    /* Purple accent - middle left */
+    radial-gradient(ellipse 50% 60% at 20% 60%, rgba(167, 139, 250, 0.5) 0%, transparent 55%),
+    /* Coral highlight */
+    radial-gradient(ellipse 45% 50% at 70% 30%, rgba(251, 191, 165, 0.45) 0%, transparent 55%);
+  animation: aurora-swirl 30s ease-in-out infinite;
+}
+
+@keyframes aurora-swirl {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(3%, 2%) rotate(2deg) scale(1.02);
+  }
+  40% {
+    transform: translate(-2%, 3%) rotate(-1deg) scale(0.98);
+  }
+  60% {
+    transform: translate(-3%, -2%) rotate(1.5deg) scale(1.01);
+  }
+  80% {
+    transform: translate(2%, -1%) rotate(-1.5deg) scale(0.99);
+  }
+}
+
+/* Fine Grain texture overlay - subtle matte paper feel */
+.aurora-bg::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism card - Aurora shows through elegantly */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(210 30% 97%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(215 20% 82%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(215 25% 72%);
+}
+
+/* Elegant loading animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Serif heading class */
+.font-serif-display {
+  font-family: var(--font-playfair), var(--font-noto-serif-kr), Georgia, serif;
+  letter-spacing: -0.02em;
+}
